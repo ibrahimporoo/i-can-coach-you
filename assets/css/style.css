@@ -13,6 +13,10 @@ body {
   color: #444444;
 }
 
+body.rtl {
+	direction: rtl;
+}
+
 a {
   color: #009cea;
   text-decoration: none;
@@ -392,7 +396,7 @@ h6 {
 }
 
 #hero .btn-get-started {
-  font-family: "Raleway", sans-serif;
+  /* font-family: "Raleway", sans-serif; */
   font-weight: 600;
   font-size: 13px;
   text-transform: uppercase;
