@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>I can coach you</title>
+  <meta content="coaching" name="description">
+  <meta content="coaching, career path, career plan" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/rtl.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Scaffold - v4.10.0
+  * Template URL: https://bootstrapmade.com/scaffold-bootstrap-metro-style-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->    
+</head>
+
+<body class="rtl">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo">
+        <h1><a href="index.html">ICanCoachYou</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
+      </div>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li class="dropdown"><a href="#"><i class="bi bi-chevron-down"></i> <span>About</span></a>
+            <ul>
+              <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+              <li><a class="nav-link scrollto" href="#testimonials">Testimonials</a></li>
+              </li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
+          <li><a class="nav-link scrollto" href="#coaches">Coaches</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <div class="header-social-links d-flex align-items-center">
+        <!--<a href="#" class="twitter" target="_blank"><i class="bi bi-twitter"></i></a>-->
+        <a href="https://www.facebook.com/Icancoachyouonline" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.linkedin.com/company/icancoachyouonline/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="fade-up">
+          <div>
+            <h1>نحن نقوم بتمكينك وليس فقط تدريبك.</h1>
+            <h2>
+              نحن فريق من المدربين الموهوبين الذين يقدمون للآخرين خططًا لتحقيق أهدافهم باستخدام الذكاء الاصطناعي.
+            </h2>
+            <script>
+              const apiKey = "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";
+              const model = "text-davinci-003";
+              const temperature = 0;
+              const maxTokens = 4060;
+              
+              function getResponse() {
+                var input = "Create a career path plan, how to start, and books & course that can help for"+ document.getElementById("input").value;
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "https://api.openai.com/v1/completions");
+              
+                // Show the loading message
+                document.getElementById("response").innerHTML = "Browse the website, as this may take up to 30 seconds.";
+                document.getElementById("response").style.color = "blue";
+              
+                // Set up the request body with the given parameters
+                var requestBody = {
+                  "model": model,
+                  "prompt": input,
+                  "temperature": temperature,
+                  "max_tokens": maxTokens,
+                };
+              
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.setRequestHeader("Authorization", "Bearer " + apiKey);
+                xhr.onreadystatechange = function() {
+                  if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    var popup = window.open("", "Popup", "width=400,height=300");
+                    var intro = "Assalamu Alaikum, Hope you have a wonderful day. Thanks for trusting our services, and we hope to help to reach your goals. AI engine answer based on you data: ";
+                    var ending = "\n\n For free 10 minutes call with a coach, Book from here https://icancoachyou.online/#pricing, and For detailed career path plan from an expert or senior in your field or meeting a coach just SUBSCRIBE through the same link. ";
+                    var formattedText = intro + response.choices[0].text.replace(/([.?!])\s*(?=[A-Z])/g, "$1\n") + ending;
+                    popup.document.write("<pre>" + formattedText + "</pre>");
+                    // Remove the loading message
+                    document.getElementById("response").innerHTML = "";
+                  }
+                };
+                xhr.send(JSON.stringify(requestBody));
+              
+              }
+              </script>
+            <style>
+              * {
+                box-sizing: border-box;
+              }
+              
+              input[type=text], select, textarea {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                resize: vertical;
+              }
+              
+              
+              </style>
+              <!-- Placeholder changing here -->
+            <input type="text" id="input" name="input" placeholder="اكتب هنا الوظيفة التي تحلم بها">
+            <br>
+            <br>
+            <button onclick="getResponse()" class="btn-get-started scrollto">احصل على خطة وظيفية في 30 ثانية بواسطة الذكاء الاصطناعي</button>
+            <br>
+            <div id="response"></div>
+            <br>
+            <a href="#pricing" class="btn-get-started scrollto">قابل مدرب</a>
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left">
+          <img src="assets/img/hero-img.png" class="img-fluid" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Coaches Section ======= -->
+    <section id="coaches" class="team">
+          <div class="container">
+    
+            <div class="section-title" data-aos="fade-up">
+              <h2>المدربون</h2>
+              <p>
+                <q>إذا كنت تريد أن تذهب بسرعة ، اذهب بمفردك ، إذا كنت تريد الذهاب بعيدًا ، فدعنا نذهب معًا.</q>
+                مثل أفريقي - مارتا جويترد
+              </p>
+              <!-- <p>“If you want to go fast, go alone, if you want to go far, go together”. African Proverb – Martha Goedert.</p> -->
+            </div>
+    
+            <div class="row">
+    
+              <div class="col-lg-4 col-md-6">
+                <div class="member" data-aos="zoom-in">
+                  <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>إبراهيم أنور</h4>
+                    <span>المدرب عام</span>
+                    <div class="social">
+                      <a href="https://twitter.com/EbrahemAnwar" target="_blank"><i class="bi bi-twitter"></i></a>
+                      <a href="https://www.facebook.com/EbrahemAnwarMohamed" target="_blank"><i class="bi bi-facebook"></i></a>
+                      <a href="https://www.instagram.com/ebrahemanwar" target="_blank"><i class="bi bi-instagram"></i></a>
+                      <a href="https://www.linkedin.com/in/ebrahemanwar" target="_blank"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 col-md-6">
+                <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                  <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>حسام الدين مجدي</h4>
+                    <span>مدرب تحليل البيانات</span>
+                    <div class="social">
+                     <!-- <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>-->
+                      <a href="https://www.linkedin.com/in/hossameldinelsayed"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <div class="member" data-aos="zoom-in" data-aos-delay="200">
+                  <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>أدهم</h4>
+                    <span>مدرب محامي</span>
+                    <div class="social">
+                    <!--  <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a> -->
+                      <a href="https://www.linkedin.com/in/dr-adham-molokhia-752282b1/"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 col-md-6">
+                <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                  <div class="pic"><img src="assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>أحمد متولي</h4>
+                    <span>مدرب إنشاء المحتوى</span>
+                    <div class="social">
+                     <!-- <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>-->
+                      <a href="https://www.linkedin.com/in/metwallyofficial/"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                  <div class="pic"><img src="assets/img/team/team-5.jpg" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>صلاح الدين محمد</h4>
+                    <span>مدرب تصميم الجرافيك</span>
+                    <div class="social">
+                      <!-- <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-linkedin"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a> -->
+                      <a href="https://www.facebook.com/groups/1664454230462828/user/718605755/"><i class="bi bi-facebook"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 col-md-6">
+                <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                  <div class="pic"><img src="assets/img/team/team-6.jpg" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>أحمد عوض الشريف</h4>
+                    <span>مدرب الموارد البشرية</span>
+                    <div class="social">
+                      <!-- <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>-->
+                      <a href="https://www.linkedin.com/in/ahmedawwadelsheref"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!--
+              <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                <div class="pic"><img src="assets/img/team/team-5.jpg" class="img-fluid" alt=""></div>
+                <div class="member-info">
+                  <h4>Salah El-Din Mohamed</h4>
+                  <span>CGraphic desiging coach</span>
+                  <div class="social">
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.facebook.com/groups/1664454230462828/user/718605755/"><i class="bi bi-facebook"></i></a>
+                  </div>
+                </div>
+              </div> -->
+          </div>
+    </section><!-- End Team Section -->
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing section-bg">
+          <div class="container">
+    
+            <div class="section-title" data-aos="fade-up">
+              <h2>الأسعار</h2>
+              <p>السعر لا يمثل القيمة ولكنه سعر ينمو.</p>
+              <p>نتوقع أن تكون النتائج جاهزة لك في غضون الـ 24 ساعة القادمة.</p>
+            </div>
+    
+            <div class="row">
+    
+              <div class="col-lg-3 col-md-6">
+                <div class="box aos-init" data-aos="zoom-in">
+                  <h3>مجانا لفترة محدودة</h3>
+                  <h4 style="text-decoration: line-through">99.00</h4>
+                  <ul>
+                    <li class="na">كيف تبدأ مع الذكاء الاصطناعي</li>
+                    <li class="na">الجدول الزمني للمسار الوظيفي مع الذكاء الاصطناعي</li>
+                    <li class="na">المسار الوظيفي من مدرب خبير</li>
+                    <li class="na">الدورات والأدوات والتطبيقات</li>
+                    <li class="na">مراجعة السيرة الذاتية / الملف الشخصي من المدرب والذكاء الاصطناعي</li>
+                    <li>10 دقائق اتصال مع مدرب</li>
+                  </ul>
+                  <div class="btn-wrap">
+                    <a href="https://calendly.com/icancoachyou/10min" target="_blank" class="btn-buy">احجز الآن</a>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
+                <div class="box featured aos-init" data-aos="zoom-in" data-aos-delay="100">
+                  <h3>احترافية</h3>
+                  <h4><sup>EGP</sup>199</h4>
+                  <ul>
+                    <li>كيف تبدأ مع الذكاء الاصطناعي</li>
+                    <li>الجدول الزمني للمسار الوظيفي مع الذكاء الاصطناعي</li>
+                    <li>المسار الوظيفي من مدرب خبير</li>
+                    <li>الدورات والأدوات والتطبيقات</li>
+                    <li class="na">مراجعة السيرة الذاتية / الملف الشخصي من المدرب والذكاء الاصطناعي</li>
+                    <li>15 دقائق اتصال مع مدرب</li>
+                  </ul>
+                  <div class="btn-wrap">
+                    <a href="https://easykash.net/QXA4584" target="_blank" class="btn-buy">اشتري الآن</a>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+                <div class="box aos-init" data-aos="zoom-in" data-aos-delay="200">
+                  <h3>مرشد</h3>
+                  <h4><sup>EGP</sup>299</h4>
+                  <ul>
+                    <li>كيف تبدأ مع الذكاء الاصطناعي</li>
+                    <li>الجدول الزمني للمسار الوظيفي مع الذكاء الاصطناعي</li>
+                    <li>المسار الوظيفي من مدرب خبير</li>
+                    <li>الدورات والأدوات والتطبيقات</li>
+                    <li class="na">مراجعة السيرة الذاتية / الملف الشخصي من المدرب والذكاء الاصطناعي</li>
+                    <li>30 دقائق اتصال مع مدرب</li>
+                  </ul>
+                  <div class="btn-wrap">
+                    <a href="https://easykash.net/PCR8674" target="_blank" class="btn-buy">اشتري الآن</a>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+                <div class="box aos-init" data-aos="zoom-in" data-aos-delay="300">
+                  <span class="advanced">متقدم</span>
+                  <h3>قابل المدرب</h3>
+                  <h4><sup>EGP</sup>499</h4>
+                  <ul>
+                    <li>كيف تبدأ مع الذكاء الاصطناعي</li>
+                    <li>الجدول الزمني للمسار الوظيفي مع الذكاء الاصطناعي</li>
+                    <li>المسار الوظيفي من مدرب خبير</li>
+                    <li>الدورات والأدوات والتطبيقات</li>
+                    <li class="na">مراجعة السيرة الذاتية / الملف الشخصي من المدرب والذكاء الاصطناعي</li>
+                    <li>60 دقائق اتصال مع مدرب</li>
+                  </ul>
+                  <div class="btn-wrap">
+                    <a href="https://easykash.net/TEI2614" target="_blank" class="btn-buy">اشتري الآن</a>
+                  </div>
+                </div>
+              </div>
+    
+            </div>
+    
+          </div>
+    </section><!-- End Pricing Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container">
+
+        <div class="section-title aos-init" data-aos="fade-up">
+          <h2>الخدمات</h2>
+          <p>يدور التدريب عبر الإنترنت حول مساعدة الآخرين على تحقيق هدف أو الوصول إلى تحول في حياتهم.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in">
+            <div class="icon-box icon-box-pink">
+              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <h4 class="title"><a href="https://icancoachyou.online/">تدريب 1 على 1</a></h4>
+              <p class="description">التدريب الفردي هو الخدمة الأكثر انتشارًا التي يقدمها المدربون عبر الإنترنت.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box icon-box-cyan">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4 class="title"><a href="https://icancoachyou.online/">دورة أونلاين</a></h4>
+              <p class="description">يمكن اعتبار الدورات التدريبية عبر الإنترنت منتجات تدريب ، بدلاً من خدمات التدريب.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box icon-box-green">
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4 class="title"><a href="https://icancoachyou.online/">إيجاد المدرب المناسب</a></h4>
+              <p class="description">نحن نسعى جاهدين للتوفيق بين العميل والمدرب بناءً على أهداف العميل وأهدافه.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 aos-init" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box icon-box-blue">
+              <div class="icon"><i class="bx bx-world"></i></div>
+              <h4 class="title"><a href="https://icancoachyou.online/">بناء خطة مهنية</a></h4>
+              <p class="description">مطابقة مهاراتك ، وما إلى ذلك ، بالوظائف أو الوظائف الحالية. مطابقة أهداف حياتك المهنية مع احتياجاتك المالية.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+    
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients">
+      <div class="container">
+
+        <div class="section-title aos-init" data-aos="fade-up">
+          <h2>موثوق به من قبل القادة</h2>
+          <p>لتنمية الثقة في العلاقة مع العميل ، يجب أن تكون الأولوية للتواصل الفعال في الوقت المناسب.</p>
+        </div>
+
+        <div class="row no-gutters clients-wrap clearfix wow fadeInUp">
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in">
+              <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in" data-aos-delay="100">
+              <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in" data-aos-delay="150">
+              <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in" data-aos-delay="200">
+              <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in" data-aos-delay="250">
+              <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in" data-aos-delay="300">
+              <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in" data-aos-delay="350">
+              <img src="assets/img/clients/client-7.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="client-logo">
+              <img src="assets/img/clients/client-8.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Clients Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+
+        <div class="section-title aos-init" data-aos="fade-up">
+          <h2>الشهادات - التوصيات</h2>
+          <p>ما نوع الدليل الذي يمكنك تقديمه والذي يوضح أن شركتك ذكية بالفعل وموثوقة ومقنعة وفعالة؟ شهادة جيدة من العملاء السابقين.</p>
+        </div>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  أعتقد أنني محظوظ لوجودي في هذا التدريب ، لقد تعلمت الكثير.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src="./I can coach you_files/testimonials-1" class="testimonial-img" alt="">
+                <h3>محمد عبدالفتاح</h3>
+                <h4>طالب علوم حاسب</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    كانت أروع ورشة عمل قمت بها
+                    منذ وقت طويل - كان مفيدًا جدًا لي ومساعدتي
+                    أتحدى نفسي للتعلم مرة أخرى
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src="./I can coach you_files/testimonials-2" class="testimonial-img" alt="">
+                <h3>مصطفي لملوم</h3>
+                <h4>مهندس</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  لقد استفدت حقا في هذا التدريب
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src="./I can coach you_files/testimonials-3" class="testimonial-img" alt="">
+                <h3>علا رضا</h3>
+                <h4>طالب علوم حاسب</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  أود أن أعرب عن امتناني لوقتك
+                  وجهودك معنا طوال فترة التدريب. لقد كان التدريب
+                  مفيدًا للغاية بالنسبة لي ، شخصيًا ومن الناحية التقنية أيضا
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src="./I can coach you_files/testimonials-4" class="testimonial-img" alt="">
+                <h3>محمد عبدالكريم</h3>
+                <h4>طالب علوم حاسب</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container">
+
+        <div class="row" data-aos="zoom-in">
+          <div class="col-lg-9 text-center text-lg-end">
+            <h3 class="">احصل على خطة وظيفية الآن</h3>
+            <p> 
+              يمكن لخطة وظيفية فعالة أن توجه حياتك المهنية بنجاح ، من العثور على وظيفتك الأولى إلى الاستمتاع بمهنة مجزية. من خلال التخطيط المهني الدقيق ، يمكنك اتخاذ خطوات لتقييم خياراتك المهنية ووضع خطة إستراتيجية لتحقيق أهدافك.
+            </p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="#pricing">لنبدأ</a>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+          <div class="container">
+    
+            <div class="row">
+              <div class="col-lg-6" data-aos="zoom-in">
+                <img src="assets/img/about.jpg" class="img-fluid" alt="">
+              </div>
+              <div class="col-lg-6 d-flex flex-column justify-contents-center" data-aos="fade-left">
+                <div class="content pt-4 pt-lg-0">
+                  <h3>تعلم المزيد عنا</h3>
+                  <p class="fst-italic">
+                    نعتقد أن هناك طريقة أفضل للتعامل مع الأهداف وسد فجوة المهارات في السوق، ونطمح إلى إطلاق العنان لإمكانات 100 مليون متعلم فضولي من خلال تطوير المهارات المطلوبة لنمو السوق
+                  </p>
+                  <ul>
+                    <li><i class="bi bi-check-circle"></i> نحن هنا لمساعدتك على النمو. أطلق العنان لقدراتك.</li>
+                    <li><i class="bi bi-check-circle"></i> مصمم لمنحك أفضل خطة مدرب مهني لاحتياجاتك ..</li>
+                    <li><i class="bi bi-check-circle"></i> سواء كنت تفكر في خطواتك التالية ، أو تريد أن تصبح قائدًا أفضل، فلدينا الدعم المناسب لك.</li>
+                  </ul>
+                  <p>
+                    الحصول على الدعم المناسب الذي تحتاجه للتقدم في حياتك المهنية يغير قواعد اللعبة. ليس عليك أن تفعل ذلك بمفردك ، ونحن هنا لمساعدتك على التفكير في القرارات الكبيرة، وتطوير المهارات لتكون إنسانًا مؤثرًا.
+                  </p>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+    </section><!-- End About Section -->
+    
+    <!-- ======= Features Section ======= -->
+    <section id="features" class="features">
+          <div class="container">
+    
+            <div class="row">
+              <div class="col-lg-6 mt-2 mb-tg-0 order-2 order-lg-1">
+                <ul class="nav nav-tabs flex-column">
+                  <li class="nav-item" data-aos="fade-up">
+                    <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
+                      <h4>كيف تبدأ</h4>
+                      <p>استنادًا إلى الذكاء الاصطناعي والمعلمين في المجالات التي تهتم بها، سنضع خطة حياتك المهنية المحددة.</p>
+                    </a>
+                  </li>
+                  <li class="nav-item mt-2" data-aos="fade-up" data-aos-delay="100">
+                    <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
+                      <h4>الجدول الزمني للمسار الوظيفي</h4>
+                      <p>قائمة بالإجراءات المفيدة لضمان نجاح أكبر خلال المراحل الست من حياتك المهنية، بدءًا من الكلية وحتى تقاعدك.</p>
+                    </a>
+                  </li>
+                  <li class="nav-item mt-2" data-aos="fade-up" data-aos-delay="200">
+                    <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
+                      <h4>ما يجب فعله و ما لا يجب فعله.</h4>
+                      <p>
+                        ماذا تفعل وما تفعل؟
+                        قواعد حول الإجراءات والأنشطة التي يجب أو لا ينبغي على الناس القيام بها أو المشاركة فيها.
+                      </p>
+                    </a>
+                  </li>
+                  <li class="nav-item mt-2" data-aos="fade-up" data-aos-delay="300">
+                    <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
+                      <h4>مراجعة المحفظة</h4>
+                      <p>فرصة عظيمة لك لتقييم تقدمك نحو مستقبلك المالي.</p>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in">
+                <div class="tab-content">
+                  <div class="tab-pane active show" id="tab-1">
+                    <figure>
+                      <img src="assets/img/features-1.png" alt="" class="img-fluid">
+                    </figure>
+                  </div>
+                  <div class="tab-pane" id="tab-2">
+                    <figure>
+                      <img src="assets/img/features-2.png" alt="" class="img-fluid">
+                    </figure>
+                  </div>
+                  <div class="tab-pane" id="tab-3">
+                    <figure>
+                      <img src="assets/img/features-3.png" alt="" class="img-fluid">
+                    </figure>
+                  </div>
+                  <div class="tab-pane" id="tab-4">
+                    <figure>
+                      <img src="assets/img/features-4.png" alt="" class="img-fluid">
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+    </section><!-- End Features Section -->
+
+    <!-- ======= F.A.Q Section ======= -->
+    <section id="faq" class="faq">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>أسئلة مكررة</h2>
+        </div>
+
+        <ul class="faq-list">
+
+          <li>
+            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">ما هي خطة المسار الوظيفي؟ ولماذا تحتاجها؟<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq1" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                التخطيط الوظيفي هو العملية التي من خلالها يساعد كبار السن / المدربون / متخصصو الموارد البشرية المتقدمين في اختيار الأهداف المهنية وتحديد المسار لتحقيقها. الهدف الرئيسي من التخطيط الوظيفي هو مساعدة الطلاب / الموظفين / المتقدمين على إيجاد تطابق أفضل بين أهدافهم الشخصية والفرص المتاحة في السوق.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">كيف تتعامل مع النتائج؟ <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq2" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                تستند جميع النتائج إلى البيانات التي أضفتها في النموذج ، لذا يرجى التفكير والقراءة بعناية قبل اتخاذ أي خطوة.
+              </p>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container">
+
+        <div class="row" data-aos="zoom-in">
+          <div class="col-lg-9 text-center text-lg-start">
+            <h3>احصل على خطة وظيفية الآن</h3>
+            <p> يمكن لخطة وظيفية فعالة أن توجه حياتك المهنية بنجاح ، من العثور على وظيفتك الأولى إلى الاستمتاع بمهنة مجزية. من خلال التخطيط المهني الدقيق ، يمكنك اتخاذ خطوات لتقييم خياراتك المهنية ووضع خطة إستراتيجية لتحقيق أهدافك.</p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="#pricing">لنبدأ</a>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact section-bg">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>تواصل معنا</h2>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-5 d-flex align-items-stretch" data-aos="fade-right">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>موقع:</h4>
+                <p>
+                  171 التحرير، وسط البلد،
+                  محافظة القاهرة 11513 ،
+                  مصر
+                </p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>البريد الإلكتروني:</h4>
+                <p dir="ltr">coach@icancoachyou.online</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>اتصل بنا:</h4>
+                <p dir="ltr">+2 0111 11 97 906</p>
+              </div>
+            </div>
+
+          </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <h3>I can coach you</h3>
+              <p>
+                171 El Tahrir, Downtown,
+                NCairo Governorate 11513,
+                Egypt<br>
+                <strong>Phone: </strong> +2 0111 11 97 906<br>
+                <strong>Email: </strong>coach@icancoachyou.online<br>
+              </p>
+              <div class="social-links mt-3">
+                <!--<a href="#" class="twitter" target="_blank"><i class="bx bxl-twitter"></i></a> -->
+                <a href="https://www.facebook.com/Icancoachyouonline" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a>
+                <a href="https://www.linkedin.com/company/icancoachyouonline/" class="linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Career planning</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Coaching</a></li>
+            </ul>
+          </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>I can coach you</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/scaffold-bootstrap-metro-style-template/ -->
+        Designed by <a href="https://know-how.business/" target="_blank">know-how.business</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

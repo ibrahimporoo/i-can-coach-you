@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>I can coach you</title>
+  <meta content="coaching" name="description">
+  <meta content="coaching, career path, career plan" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <!-- =======================================================
+  * Template Name: Scaffold - v4.10.0
+  * Template URL: https://bootstrapmade.com/scaffold-bootstrap-metro-style-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->    
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo">
+        <h1><a href="index.html">ICanCoachYou</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
+      </div>
+
+      <nav id="navbar" class="navbar order-last order-lg-0 ms-auto">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+              <li><a class="nav-link scrollto" href="#testimonials">Testimonials</a></li>
+              </li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
+          <li><a class="nav-link scrollto" href="#coaches">Coaches</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <div class="header-social-links d-flex align-items-center">
+        <!--<a href="#" class="twitter" target="_blank"><i class="bi bi-twitter"></i></a>-->
+        <a href="https://www.facebook.com/Icancoachyouonline" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.linkedin.com/company/icancoachyouonline/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="fade-up">
+          <div>
+            <h1>We empower you not just coach you.</h1>
+            <h2>We are a team of talented coaches who give others plans to reach their goals using AI.</h2>
+            <script>
+              const apiKey = "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";
+              const model = "text-davinci-003";
+              const temperature = 0;
+              const maxTokens = 4060;
+              
+              function getResponse() {
+                var input = "Create a career path plan, how to start, and books & course that can help for"+ document.getElementById("input").value;
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "https://api.openai.com/v1/completions");
+              
+                // Show the loading message
+                document.getElementById("response").innerHTML = "Browse the website, as this may take up to 30 seconds.";
+                document.getElementById("response").style.color = "blue";
+              
+                // Set up the request body with the given parameters
+                var requestBody = {
+                  "model": model,
+                  "prompt": input,
+                  "temperature": temperature,
+                  "max_tokens": maxTokens,
+                };
+              
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.setRequestHeader("Authorization", "Bearer " + apiKey);
+                xhr.onreadystatechange = function() {
+                  if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    var popup = window.open("", "Popup", "width=400,height=300");
+                    var intro = "Assalamu Alaikum, Hope you have a wonderful day. Thanks for trusting our services, and we hope to help to reach your goals. AI engine answer based on you data: ";
+                    var ending = "\n\n For free 10 minutes call with a coach, Book from here https://icancoachyou.online/#pricing, and For detailed career path plan from an expert or senior in your field or meeting a coach just SUBSCRIBE through the same link. ";
+                    var formattedText = intro + response.choices[0].text.replace(/([.?!])\s*(?=[A-Z])/g, "$1\n") + ending;
+                    popup.document.write("<pre>" + formattedText + "</pre>");
+                    // Remove the loading message
+                    document.getElementById("response").innerHTML = "";
+                  }
+                };
+                xhr.send(JSON.stringify(requestBody));
+              
+              }
+              </script>
+            <style>
+              * {
+                box-sizing: border-box;
+              }
+              
+              input[type=text], select, textarea {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                resize: vertical;
+              }
+              
+              }
+              </style>
+            <input type="text" id="input" name="input" value="Write here your dream job">
+            <br>
+            <br>
+            <button onclick="getResponse()" class="btn-get-started scrollto">Get a career plan in 30 sec by AI</button>
+            <br>
+            <div id="response"></div>
+            <br>
+            <a href="#pricing" class="btn-get-started scrollto">Meet a coach</a>
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left">
+          <img src="assets/img/hero-img.png" class="img-fluid" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Coaches Section ======= -->
+    <section id="coaches" class="team">
+          <div class="container">
+    
+            <div class="section-title" data-aos="fade-up">
+              <h2>Coaches</h2>
+              <p>“If you want to go fast, go alone, if you want to go far, go together”. African Proverb – Martha Goedert.</p>
+            </div>
+    
+            <div class="row">
+    
+              <div class="col-lg-4 col-md-6">
+                <div class="member" data-aos="zoom-in">
+                  <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>Ebrahem Anwar</h4>
+                    <span>General Coach</span>
+                    <div class="social">
+                      <a href="https://twitter.com/EbrahemAnwar" target="_blank"><i class="bi bi-twitter"></i></a>
+                      <a href="https://www.facebook.com/EbrahemAnwarMohamed" target="_blank"><i class="bi bi-facebook"></i></a>
+                      <a href="https://www.instagram.com/ebrahemanwar" target="_blank"><i class="bi bi-instagram"></i></a>
+                      <a href="https://www.linkedin.com/in/ebrahemanwar" target="_blank"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 col-md-6">
+                <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                  <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>Hossameldin Magdy</h4>
+                    <span>Data Analysis coach</span>
+                    <div class="social">
+                     <!-- <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>-->
+                      <a href="https://www.linkedin.com/in/hossameldinelsayed"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <div class="member" data-aos="zoom-in" data-aos-delay="200">
+                  <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>Adham</h4>
+                    <span>Lawyer coach</span>
+                    <div class="social">
+                    <!--  <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a> -->
+                      <a href="https://www.linkedin.com/in/dr-adham-molokhia-752282b1/"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 col-md-6">
+                <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                  <div class="pic"><img src="assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>Ahmed Metwaly</h4>
+                    <span>Content creation coach</span>
+                    <div class="social">
+                     <!-- <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>-->
+                      <a href="https://www.linkedin.com/in/metwallyofficial/"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                  <div class="pic"><img src="assets/img/team/team-5.jpg" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>Salah El-Din Mohamed</h4>
+                    <span>Graphic desiging coach</span>
+                    <div class="social">
+                      <!-- <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-linkedin"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a> -->
+                      <a href="https://www.facebook.com/groups/1664454230462828/user/718605755/"><i class="bi bi-facebook"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-4 col-md-6">
+                <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                  <div class="pic"><img src="assets/img/team/team-6.jpg" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>Ahmed Awwad El Sheref</h4>
+                    <span>HR coach</span>
+                    <div class="social">
+                      <!-- <a href=""><i class="bi bi-twitter"></i></a>
+                      <a href=""><i class="bi bi-facebook"></i></a>
+                      <a href=""><i class="bi bi-instagram"></i></a>-->
+                      <a href="https://www.linkedin.com/in/ahmedawwadelsheref"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!--
+              <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                <div class="pic"><img src="assets/img/team/team-5.jpg" class="img-fluid" alt=""></div>
+                <div class="member-info">
+                  <h4>Salah El-Din Mohamed</h4>
+                  <span>CGraphic desiging coach</span>
+                  <div class="social">
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.facebook.com/groups/1664454230462828/user/718605755/"><i class="bi bi-facebook"></i></a>
+                  </div>
+                </div>
+              </div> -->
+          </div>
+    </section><!-- End Team Section -->
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing section-bg">
+          <div class="container">
+    
+            <div class="section-title" data-aos="fade-up">
+              <h2>Pricing</h2>
+              <p>The price does not represent the value but it is a price to grow.</p>
+              <p>We expect to have the results ready for you within the next 24 hours.</p>
+            </div>
+    
+            <div class="row">
+    
+              <div class="col-lg-3 col-md-6">
+                <div class="box" data-aos="zoom-in">
+                  <h3>Free for a limited time</h3>
+                  <h4 style="text-decoration: line-through">99.00</h4>
+                  <ul>
+                    <li class="na">How to start with AI</li>
+                    <li class="na">Timeline for career path with AI</li>
+                    <li class="na">career path from expert coach</li>
+                    <li class="na">Courses, Tools and apps</li>
+                    <li class="na">CV/Portfolio review from a coach and AI</li>
+                    <li>10 minutes call with a coach</li>
+                  </ul>
+                  <div class="btn-wrap">
+                    <a href="https://calendly.com/icancoachyou/10min" target="_blank" class="btn-buy">Book Now</a>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
+                <div class="box featured" data-aos="zoom-in" data-aos-delay="100">
+                  <h3>Pro</h3>
+                  <h4><sup>EGP</sup>199</h4>
+                  <ul>
+                    <li>How to start with AI</li>
+                    <li>Timeline for career path with AI</li>
+                    <li>career path from expert coach</li>
+                    <li>Courses, Tools and apps</li>
+                    <li class="na">CV/Portfolio review from a coach and AI</li>
+                    <li>15 minutes meeting online with a coach</li>
+                  </ul>
+                  <div class="btn-wrap">
+                    <a href="https://easykash.net/QXA4584" target="_blank" class="btn-buy">Buy Now</a>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+                <div class="box" data-aos="zoom-in" data-aos-delay="200">
+                  <h3>Guru</h3>
+                  <h4><sup>EGP</sup>299</h4>
+                  <ul>
+                    <li>How to start with AI</li>
+                    <li>Timeline for career path with AI</li>
+                    <li>career path from expert coach</li>
+                    <li>Courses, Tools and apps</li>
+                    <li class="na">CV/Portfolio review from a coach and AI</li>
+                    <li>30 minutes meeting online with a coach</li>
+                  </ul>
+                  <div class="btn-wrap">
+                    <a href="https://easykash.net/PCR8674" target="_blank" class="btn-buy">Buy Now</a>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+                <div class="box" data-aos="zoom-in" data-aos-delay="300">
+                  <span class="advanced">Advanced</span>
+                  <h3>Meet the coach</h3>
+                  <h4><sup>EGP</sup>499</h4>
+                  <ul>
+                    <li>How to start with AI</li>
+                    <li>Timeline for career path with AI</li>
+                    <li>career path from expert coach</li>
+                    <li>Courses, Tools and apps</li>
+                    <li>CV/Portfolio review from a coach and AI</li>
+                    <li>60 minutes meeting online with a coach</li>
+                  </ul>
+                  <div class="btn-wrap">
+                    <a href="https://easykash.net/TEI2614" target="_blank" class="btn-buy">Buy Now</a>
+                  </div>
+                </div>
+              </div>
+    
+            </div>
+    
+          </div>
+    </section><!-- End Pricing Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Services</h2>
+          <p>Online coaching is all about helping others achieve a goal or reach a transformation in their lives.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in">
+            <div class="icon-box icon-box-pink">
+              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <h4 class="title"><a href="">1-on-1 Coaching</a></h4>
+              <p class="description">One-on-one coaching is the most widespread service offered by online coaches out there.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box icon-box-cyan">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4 class="title"><a href="">Online Course</a></h4>
+              <p class="description">Online courses can be considered coaching products, rather than coaching services.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box icon-box-green">
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4 class="title"><a href="">Finding the right coach</a></h4>
+              <p class="description">We strive to match a client and coach based on the client’s goals and objectives.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box icon-box-blue">
+              <div class="icon"><i class="bx bx-world"></i></div>
+              <h4 class="title"><a href="">Build a career plan</a></h4>
+              <p class="description">Matching your skills, etc. to existing jobs or careers. Matching your career goals to your financial needs.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+    
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Trusted by leaders at</h2>
+          <p>To develop trust in a relationship with a client, the priority should be on timely and efficient communication.</p>
+        </div>
+
+        <div class="row no-gutters clients-wrap clearfix wow fadeInUp">
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in">
+              <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in" data-aos-delay="100">
+              <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in" data-aos-delay="150">
+              <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in" data-aos-delay="200">
+              <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in" data-aos-delay="250">
+              <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in" data-aos-delay="300">
+              <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo" data-aos="zoom-in" data-aos-delay="350">
+              <img src="assets/img/clients/client-7.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-xs-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="client-logo">
+              <img src="assets/img/clients/client-8.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Clients Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Testimonials</h2>
+          <p>What kind of evidence can you provide that shows your company is indeed smart, reliable, compelling and efficient? A good testimonial from past clients.</p>
+        </div>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  I think that i'm lucky to be in this coaching, i learned alot.
+                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/testimonials-1" class="testimonial-img" alt="">
+                <h3>Mohamed Abd Elfatah</h3>
+                <h4>Computer science student</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  it was the most amazing workshop that I did
+                  from a long time - it was very useful for me and help me
+                  challenge myself for learning again
+                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/testimonials-2" class="testimonial-img" alt="">
+                <h3>Mostafa Lamloum</h3>
+                <h4>Engineer</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  literally benefited from this Coaching
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/testimonials-3" class="testimonial-img" alt="">
+                <h3>Ola Reda</h3>
+                <h4>Computer science student</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  I'd like to express my gratitude for
+                  your time and efforts with us throughout the coaching. It
+                  was extremely beneficial to me, both personally and
+                  technically.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/testimonials-4" class="testimonial-img" alt="">
+                <h3>Mohamed Abdelkarim</h3>
+                <h4>Computer science student</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container">
+
+        <div class="row" data-aos="zoom-in">
+          <div class="col-lg-9 text-center text-lg-start">
+            <h3>Get a career plan now</h3>
+            <p> An effective career plan can guide your professional life successfully, from finding your first job to enjoying a rewarding career. With careful career planning, you can take steps to evaluate your professional options and develop a strategic plan for achieving your goals.</p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="#pricing">Let's start</a>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+          <div class="container">
+    
+            <div class="row">
+              <div class="col-lg-6" data-aos="zoom-in">
+                <img src="assets/img/about.jpg" class="img-fluid" alt="">
+              </div>
+              <div class="col-lg-6 d-flex flex-column justify-contents-center" data-aos="fade-left">
+                <div class="content pt-4 pt-lg-0">
+                  <h3>Learn more about us</h3>
+                  <p class="fst-italic">
+                    We believe there is a better way to approach goals and bridge the gap of skills in the market, we aspire to unleash the potential of 100 Million curious learners by developing the required skills for growing market
+                  </p>
+                  <ul>
+                    <li><i class="bi bi-check-circle"></i> We're here to help you grow. Unleash your potentials.</li>
+                    <li><i class="bi bi-check-circle"></i> designed to give you the best career coach plan for your needs..</li>
+                    <li><i class="bi bi-check-circle"></i>Whether you're figuring out your next steps, or want to become a better leader, we've got the right support for you. </li>
+                  </ul>
+                  <p>
+                    Getting the right support you need to advance in your career is game changing. You don't have to do it alone, and we're here to help you think through big decisions, develop skills to be an impactful human being.
+                  </p>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+    </section><!-- End About Section -->
+    
+    <!-- ======= Features Section ======= -->
+    <section id="features" class="features">
+          <div class="container">
+    
+            <div class="row">
+              <div class="col-lg-6 mt-2 mb-tg-0 order-2 order-lg-1">
+                <ul class="nav nav-tabs flex-column">
+                  <li class="nav-item" data-aos="fade-up">
+                    <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
+                      <h4>How to start</h4>
+                      <p>Based on AI and gurus in fields you are interested in we will create your specific career plan.</p>
+                    </a>
+                  </li>
+                  <li class="nav-item mt-2" data-aos="fade-up" data-aos-delay="100">
+                    <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
+                      <h4>Timeline for career path</h4>
+                      <p>a checklist of helpful actions for assuring greater success during the six phases of your career, beginning in college and continuing through your retirement.</p>
+                    </a>
+                  </li>
+                  <li class="nav-item mt-2" data-aos="fade-up" data-aos-delay="200">
+                    <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
+                      <h4>do's and don'ts.</h4>
+                      <p>What are do's and don ts?
+                        rules about actions and activities that people should or should not perform or take part in.</p>
+                    </a>
+                  </li>
+                  <li class="nav-item mt-2" data-aos="fade-up" data-aos-delay="300">
+                    <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
+                      <h4>Portfolio review</h4>
+                      <p>a great opportunity for you to assess your progress toward your financial future.</p>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in">
+                <div class="tab-content">
+                  <div class="tab-pane active show" id="tab-1">
+                    <figure>
+                      <img src="assets/img/features-1.png" alt="" class="img-fluid">
+                    </figure>
+                  </div>
+                  <div class="tab-pane" id="tab-2">
+                    <figure>
+                      <img src="assets/img/features-2.png" alt="" class="img-fluid">
+                    </figure>
+                  </div>
+                  <div class="tab-pane" id="tab-3">
+                    <figure>
+                      <img src="assets/img/features-3.png" alt="" class="img-fluid">
+                    </figure>
+                  </div>
+                  <div class="tab-pane" id="tab-4">
+                    <figure>
+                      <img src="assets/img/features-4.png" alt="" class="img-fluid">
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+    </section><!-- End Features Section -->
+
+    <!-- ======= F.A.Q Section ======= -->
+    <section id="faq" class="faq">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <ul class="faq-list">
+
+          <li>
+            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">What is a Career Path Plan? And why do you need it?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq1" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                Career planning is the process by which Seniors/Coaches/HR professionals help their applicants select career goals and identify the path to achieving them. The main goal of career planning is to assist students/employees/applicants find a better match between their personal goals and the opportunities available in the Market.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">How to deal with the results? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq2" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                All results based on data you added in the form so please think and read carefully before taking any step.
+              </p>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container">
+
+        <div class="row" data-aos="zoom-in">
+          <div class="col-lg-9 text-center text-lg-start">
+            <h3>Get a career plan now</h3>
+            <p> An effective career plan can guide your professional life successfully, from finding your first job to enjoying a rewarding career. With careful career planning, you can take steps to evaluate your professional options and develop a strategic plan for achieving your goals.</p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="#pricing">Let's start</a>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact section-bg">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Contact Us</h2>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-5 d-flex align-items-stretch" data-aos="fade-right">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>171 El Tahrir, Downtown,
+                  NCairo Governorate 11513,
+                  Egypt</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>coach@icancoachyou.online</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>+2 0111 11 97 906</p>
+              </div>
+            </div>
+
+          </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <h3>I can coach you</h3>
+              <p>
+                171 El Tahrir, Downtown,
+                NCairo Governorate 11513,
+                Egypt<br>
+                <strong>Phone: </strong> +2 0111 11 97 906<br>
+                <strong>Email: </strong>coach@icancoachyou.online<br>
+              </p>
+              <div class="social-links mt-3">
+                <!--<a href="#" class="twitter" target="_blank"><i class="bx bxl-twitter"></i></a> -->
+                <a href="https://www.facebook.com/Icancoachyouonline" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a>
+                <a href="https://www.linkedin.com/company/icancoachyouonline/" class="linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Career planning</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Coaching</a></li>
+            </ul>
+          </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>I can coach you</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/scaffold-bootstrap-metro-style-template/ -->
+        Designed by <a href="https://know-how.business/" target="_blank">know-how.business</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
