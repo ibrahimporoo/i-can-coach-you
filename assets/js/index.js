@@ -20,10 +20,10 @@ const db = getFirestore()
 
 const colRef = collection(db, 'restaurants')
 
+let html = '';
 window.onload = () => {
 	// selecting the coaches Row
 	const coachesContent = document.getElementById('coaches-content');
-	let html = '';
 	// Fetching 'Getting' Data
 	getDocs(colRef)
 	.then((snapshot) => {
@@ -33,27 +33,20 @@ window.onload = () => {
 		})
 		restaurants.map(restaurant => {
 			html += `
-			<div class="col-lg-4 col-md-6">
-				<div class="member" data-aos="zoom-in">
-					<div class="pic"><img src="${restaurant.photo}" class="img-fluid" alt=""></div>
-					<div class="member-info">
-						<h4>${restaurant.name}</h4>
-						<span>${restaurant.category}</span>
-						<div class="social">
-							<ul className="details">
-							<li>${restaurant.price}</li>
-								<li>${restaurant.city}</li>
-								<li>${restaurant.numRating}</li>
-							</ul>
-							// <a href="https://twitter.com/EbrahemAnwar" target="_blank"><i class="bi bi-twitter"></i></a>
-							// <a href="https://www.facebook.com/EbrahemAnwarMohamed" target="_blank"><i class="bi bi-facebook"></i></a>
-							// <a href="https://www.instagram.com/ebrahemanwar" target="_blank"><i class="bi bi-instagram"></i></a>
-							// <a href="https://www.linkedin.com/in/ebrahemanwar" target="_blank"><i class="bi bi-linkedin"></i></a>
+				<div class="col-lg-4 col-md-6 mb-10">
+					<div class="member" data-aos="zoom-in">
+						<div class="pic"><img src="${restaurant.photo}" class="img-fluid" alt=""></div>
+							<div class="member-info coaches pricing">
+								<h4>${restaurant.name}</h4>
+								<span>price: ${restaurant.price}</span>
+								<p class='detail-item mb-1 mt-1'>Details</p>
+								<span>${restaurant.category} - ${restaurant.city} - ${restaurant.numRating} stars</span>
+								<a href="" target="_blank" class="btn-buy mt-2">Buy Now</a>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			`;
+				`;
 		})
 		coachesContent.innerHTML = '';
 		coachesContent.innerHTML = html;
@@ -65,6 +58,14 @@ window.onload = () => {
 
 // $$$$$$$$$$$$$$$$$$$$$
 /*
+<div class="btn-wrap">
+	<a href="https://calendly.com/icancoachyou/10min" target="_blank" class="btn-buy">Book Now</a>
+</div>
+// <ul class="details">
+// 	<li>price: ${restaurant.price}</li>
+// 	<li>from (city): ${restaurant.city}</li>
+								// 	<li>rating: ${restaurant.numRating}</li>
+								// </ul>
 {
     "name": "Bar Eatin'",
     "category": "Italian",
