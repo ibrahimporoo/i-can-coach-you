@@ -20,10 +20,8 @@ const db = getFirestore()
 
 const colRef = collection(db, 'restaurants')
 
-let windowLocation;
-windowLocation = window.location.pathname
-
 window.onload = () => {
+	let windowLocation = window.location.pathname;
 	// Fetching 'Getting' Data
 	getDocs(colRef)
 	.then((snapshot) => {
