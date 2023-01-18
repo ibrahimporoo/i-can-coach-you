@@ -33,8 +33,6 @@ async function getData() {
 		snapshot.docs.forEach((doc) => {
 			coaches.push({ ...doc.data(), id: doc.id });
 		})
-		console.log(coaches);
-		// topCoaches = coaches.slice(0, 3);
 		coaches.map(coach => {
 			html += `
 				<div class="col-lg-4 col-md-6 mb-10">
