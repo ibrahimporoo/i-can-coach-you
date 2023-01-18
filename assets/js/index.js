@@ -1,24 +1,24 @@
 import { initializeApp } from 'firebase/app'
 import {
-	getFirestore, collection, getDocs, query
+	getFirestore, collection, getDocs
 } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
-  authDomain: "elmawkaabeta.firebaseapp.com",
-  databaseURL: "https://elmawkaabeta.firebaseio.com",
-  projectId: "elmawkaabeta",
-  storageBucket: "elmawkaabeta.appspot.com",
-  messagingSenderId: "808588970288",
-  appId: "1:808588970288:web:8fe9fcbf5e7ca8cca820f5",
-  measurementId: "G-G8FTTQ0EB2"
+  apiKey: "AIzaSyDnpUv6FkAyt3eGai3AtCm65exvwFwvOyE",
+  authDomain: "collection-practice.firebaseapp.com",
+  projectId: "collection-practice",
+  storageBucket: "collection-practice.appspot.com",
+  messagingSenderId: "1054284320639",
+  appId: "1:1054284320639:web:5ad00474d208b0c1eed44a"
 };
 
 initializeApp(firebaseConfig)
 
 const db = getFirestore()
 
-const colRef = collection(db, 'restaurants')
+const lang = document.querySelector('html').lang;
+
+const colRef = collection(db, 'restaurants', 'languages', lang);
 
 // selecting the coaches Row
 const coachesContent = document.getElementById('coaches-content');
@@ -30,10 +30,10 @@ async function getData() {
 	// Fetching 'Getting' Data
 	await getDocs(colRef)
 	.then((snapshot) => {
-		// let coaches = [];
 		snapshot.docs.forEach((doc) => {
 			coaches.push({ ...doc.data(), id: doc.id });
 		})
+		console.log(coaches);
 		// topCoaches = coaches.slice(0, 3);
 		coaches.map(coach => {
 			html += `
@@ -54,13 +54,39 @@ async function getData() {
 		})
 	})
 	.catch(err => {
-		console("Error: ", err);
+		console.log("Error: " + err);
 	})
 }
 
-getData()
-.then(() => {
-	coachesContent.innerHTML = '';
-	coachesContent.innerHTML = html;
-})
-.catch(err => coachesContent.innerHTML = err)
+getData().then(() => {
+	coachesContent.innerHTML = ''
+	coachesContent.innerHTML = html
+});
+
+
+// getDocs(colRef).then((snapshot) => {
+// 	console.log(snapshot);
+// 	console.log(snapshot.docs);
+// })
+
+// const colRef = collection(db, `/restaurants/1G3OUuNQw80cKcIZu9E6/exams`);
+// const colRef = collection(db, `restaurants`);
+
+// getDocs(colRef).then((snapshot) => {
+// 	console.log(snapshot);
+// 	console.log(snapshot.docs);
+// 	console.log(snapshot.docs[0]);
+// 	console.log(snapshot.docs[0].id);
+// })
+
+// const docRef = doc(db, "restaurants", "languages");
+// const docSnap = await getDoc(docRef);
+
+// if (docSnap.exists()) {
+//   console.log("Document data:", docSnap.data());
+// } else {
+//   // doc.data() will be undefined in this case
+//   console.log("No such document!");
+// }
+
+
