@@ -18,7 +18,7 @@ const db = getFirestore()
 
 const lang = document.querySelector('html').lang;
 
-const colRef = collection(db, 'restaurants', 'languages', lang);
+const colRef = collection(db, 'coaches', 'languages', 'en');
 
 // selecting the coaches Row
 const coachesContent = document.getElementById('coaches-content');
@@ -33,17 +33,23 @@ async function getData() {
 		snapshot.docs.forEach((doc) => {
 			coaches.push({ ...doc.data(), id: doc.id });
 		})
+		console.log(coaches);
 		coaches.map(coach => {
 			html += `
 				<div class="col-lg-4 col-md-6 mb-10">
 					<div class="member" data-aos="zoom-in">
-						<div class="pic"><img src="${coach.photo}" class="img-fluid" alt=""></div>
+						<div class="pic"><img src="${coach.image}" class="img-fluid" alt="Coach Image"></div>
 							<div class="member-info coaches pricing">
-								<h4>${coach.name}</h4>
-								<span>price: ${coach.price}</span>
+								<h4>${coach.name} - ${coach.jobTitle}</h4>
+								<span>price: ${coach.pricing}</span>
 								<p class='detail-item mb-1 mt-1'>Details</p>
-								<span>${coach.category} - ${coach.city} - ${coach.numRating} stars</span>
-								<a href="" target="_blank" class="btn-buy mt-2">Buy Now</a>
+								<span>${coach.category}</span>
+								<span>${coach.summary}</span>
+								<span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
+								<div class="social">
+									<a href="${coach.SM_accounts}" target="_blank"><i class="bi bi-linkedin"></i></a>
+								</div>
+								<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Buy Now</a>
 							</div>
 						</div>
 					</div>
@@ -54,6 +60,23 @@ async function getData() {
 	.catch(err => {
 		console.log("Error: " + err);
 	})
+	/*
+		{
+    "country": "مصر",
+    "summary": "",
+    "category": "المبيعات والتسويق، إدارة الأعمال، التكنولوجيا، العمليات، الشؤون القانونية، ريادة الأعمال ، تنمية الأطفال، أسلوب الحياة والصحة",
+    "rating": "5",
+    "jobTitle": "مساعد رئيس تنفيذي، مؤسس/صاحب عمل",
+    "city": "القاهرة",
+    "image": "https://drive.google.com/file/d/10QyOuOvjkgjD-qmWuT8isDZLMbngdBiq/view?usp=share_link",
+    "paymentLink": "https://easykash.net/TEI2615",
+    "pricing": "500 حنية مصري",
+    "name": "أدهم",
+    "order": "3",
+    "SM_accounts": "https://www.linkedin.com/in/dr-adham-molokhia-752282b1/",
+    "id": "I2dR6tDU4nlG1GozazEk"
+}
+	*/ 
 }
 
 getData().then(() => {
