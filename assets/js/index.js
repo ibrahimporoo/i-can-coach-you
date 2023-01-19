@@ -20,12 +20,11 @@ const lang = document.querySelector('html').lang;
 
 const colRef = collection(db, 'coaches', 'languages', lang);
 
-// selecting the coaches Row
+// selecting the coaches Row in html file
 const coachesContent = document.getElementById('coaches-content');
 let coaches = []; // for fulling coaches in coaches page
-let topCoachesCount = 3;
-let html = '';
-
+let html = ''; // content that we put in html
+coachesContent.innerHTML = '' // empty coaches content before getting data
 async function getData() {
 	// Fetching 'Getting' Data
 	await getDocs(colRef)
@@ -36,11 +35,14 @@ async function getData() {
 		})
 		// Adding Content of Data coming from Firebase to HTML
 		if(coachesContent.classList.contains('top-coaches')){
-			coaches = coaches.slice(0, topCoachesCount)
+			// coaches = coaches.slice(0, topCoachesCount)
+			coaches = coaches.filter(coach => {
+				return coach.order <= 3;
+			})
 		}
 		coaches.map(coach => {
 			html += `
-				<div class="col-lg-4 col-md-6 mb-10">
+				<div class="col-lg-4 col-md-6">
 					<div class="member" data-aos="zoom-in">
 						<div class="pic"><img src="${coach.image}" class="img-fluid" alt="Coach Image"></div>
 							<div class="member-info coaches pricing">
@@ -64,12 +66,11 @@ async function getData() {
 				`;
 		})
 	})
-	.catch(err => {
-		alert("Error: " + err);
+	.catch( _ => {
+		coachesContent.innerHTML = 'No Coaches till now'
 	})
 }
 
 getData().then(() => {
-	coachesContent.innerHTML = ''
 	coachesContent.innerHTML = html
 });
