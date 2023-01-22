@@ -36,7 +36,7 @@ async function getData() {
 		snapshot.docs.forEach((doc) => {
 			coaches.push({ ...doc.data(), id: doc.id });
 		})
-		console.log(coaches);
+		coaches.sort((a, b) => a.order - b.order); // sort the array according to it's order
 		// Adding Content of Data coming from Firebase to HTML
 		if(coachesContent.classList.contains('top-coaches')){
 			// coaches = coaches.slice(0, topCoachesCount)
@@ -44,7 +44,7 @@ async function getData() {
 				return coach.order <= 3;
 			})
 		}
-		console.log(coaches);
+		// console.log(coaches);
 		coaches.map(coach => {
 			html += `
 				<div class="col-lg-4 col-md-6">
@@ -63,7 +63,7 @@ async function getData() {
 								<div class="social">
 									<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
 								</div>
-								<a href="${coach.paymentlink}" target="_blank" class="btn-buy mt-2">Buy Now</a>
+								<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Buy Now</a>
 							</div>
 						</div>
 					</div>
