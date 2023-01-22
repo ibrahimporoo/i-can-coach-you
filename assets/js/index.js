@@ -32,7 +32,6 @@ async function getData() {
 	// Fetching 'Getting' Data
 	await getDocs(colRef)
 	.then((snapshot) => {
-		console.log(snapshot);
 		// Check if we in the home page or top coaches page
 		snapshot.docs.forEach((doc) => {
 			coaches.push({ ...doc.data(), id: doc.id });
@@ -64,7 +63,7 @@ async function getData() {
 								<div class="social">
 									<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
 								</div>
-								<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Buy Now</a>
+								<a href="${coach.paymentlink}" target="_blank" class="btn-buy mt-2">Buy Now</a>
 							</div>
 						</div>
 					</div>
