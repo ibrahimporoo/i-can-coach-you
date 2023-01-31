@@ -85,6 +85,8 @@ getData().then(() => {
 
 /* Filtering with select box */
 const industryBox = document.getElementById('industry');
+const searchField = document.getElementById('search-field');
+const searchCountry = document.getElementById('search-country');
 
 
 industryBox.onchange = () => {
@@ -123,3 +125,83 @@ industryBox.onchange = () => {
 	};
 };
 
+searchField.addEventListener('keyup', () => {
+	let userSearch = searchField.value;
+	let html_filtering_by_user = '';
+	if(userSearch !== '') {
+		coaches.filter( coach => {
+			if(
+				coach.category.toLowerCase().indexOf(userSearch) != -1 ||
+				coach.name.toLowerCase().indexOf(userSearch) != -1 ||
+				coach.jobTitle.toLowerCase().indexOf(userSearch) != -1 ||
+				coach.country.toLowerCase().indexOf(userSearch) != -1
+			) {
+				return coach;
+			}
+		})
+		.map(coach => {
+			html_filtering_by_user += `
+				<div class="col-lg-4 col-md-6">
+					<div class="member" data-aos="zoom-in">
+						<div class="pic"><img src="${coach.image}" class="img-fluid" alt="Coach Image"></div>
+							<div class="member-info coaches pricing">
+								<div class='ps-3 pe-3'>
+									<h5>${coach.name}</h5>
+									<h4>${coach.jobTitle}</h4>
+								</div>
+								<span>${coach.pricing}</span>
+								<p class='detail-item mb-1 mt-1'>Details</p>
+								<span>${coach.category}</span>
+								<span>${coach.summary}</span>
+								<span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
+								<div class="social">
+									<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
+								</div>
+								<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Buy Now</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			`
+		});
+		coachesContent.innerHTML = html_filtering_by_user;
+	} else {
+		coachesContent.innerHTML = html;
+	};
+})
+
+searchCountry.onchange = () => {
+	let userCountry = searchCountry.value;
+	let html_filtering_by_user = '';
+	if(userCountry !== '') {
+		coaches.filter( coach => coach.country.toLowerCase().indexOf(userCountry) != -1)
+		.map(coach => {
+			html_filtering_by_user += `
+				<div class="col-lg-4 col-md-6">
+					<div class="member" data-aos="zoom-in">
+						<div class="pic"><img src="${coach.image}" class="img-fluid" alt="Coach Image"></div>
+							<div class="member-info coaches pricing">
+								<div class='ps-3 pe-3'>
+									<h5>${coach.name}</h5>
+									<h4>${coach.jobTitle}</h4>
+								</div>
+								<span>${coach.pricing}</span>
+								<p class='detail-item mb-1 mt-1'>Details</p>
+								<span>${coach.category}</span>
+								<span>${coach.summary}</span>
+								<span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
+								<div class="social">
+									<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
+								</div>
+								<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Buy Now</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			`
+		});
+		coachesContent.innerHTML = html_filtering_by_user;
+	} else {
+		coachesContent.innerHTML = html;
+	};
+};
