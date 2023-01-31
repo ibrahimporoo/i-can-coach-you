@@ -110,7 +110,41 @@
               <!-- <br>
               <a href="coaches.html">Browse coaches</a> -->
             </div>
-            
+
+            <!-- Filtering with select box -->
+            <form id="filtered-form" class="d-flex align-items-center justify-content-between mb-4">
+
+              <div class="input-field searching">
+                <input type="search" id="" placeholder="search anything...">
+              </div>
+
+              <div class="selection-group d-flex align-items-center">
+                <div class="input-field ms-2 ">
+                  <select id="industry">
+                    <option value="">Select industry...</option>
+                    <option value="sales">Sales & Marketing</option>
+                    <option value="business">Business Management</option>
+                    <option value="soft skills">Soft Skills</option>
+                    <option value="content">Content & copy rights</option>
+                    <option value="hr">HR</option>
+                    <option value="media">Media, Photography & Film</option>
+                    <option value="technology">Technology</option>
+                    <option value="programming">programming</option>
+                    <option value="cyber">Cyber security</option>
+                    <option value="operations">operations</option>
+                  </select>
+                </div>
+  
+                <div class="input-field ms-2 ">
+                  <select id="country">
+                    <option value="egypt">Egypt</option>
+                    <option value="saudi">Saudi Arabia</option>
+                  </select>
+                </div>
+              </div>
+
+            </form>
+
             <div class="row filtered-coaches" id="coaches-content">
                 <!-- Filtering Coaches -->
                 <!-- Sales Marketing Coaches -->

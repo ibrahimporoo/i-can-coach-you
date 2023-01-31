@@ -4,14 +4,15 @@ import {
 } from 'firebase/firestore/lite';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDnpUv6FkAyt3eGai3AtCm65exvwFwvOyE",
-  authDomain: "collection-practice.firebaseapp.com",
-  projectId: "collection-practice",
-  storageBucket: "collection-practice.appspot.com",
-  messagingSenderId: "1054284320639",
-  appId: "1:1054284320639:web:5ad00474d208b0c1eed44a"
+  apiKey: "AIzaSyBsBaihwh8F_UY8oYEsfcMlQEwEIgXcbxc",
+  authDomain: "elmawkaabeta.firebaseapp.com",
+  databaseURL: "https://elmawkaabeta.firebaseio.com",
+  projectId: "elmawkaabeta",
+  storageBucket: "elmawkaabeta.appspot.com",
+  messagingSenderId: "808588970288",
+  appId: "1:808588970288:web:6fb8d6b492c746efa820f5",
+  measurementId: "G-GZZM542VN3"
 };
-// "1:808588970288:web:6fb8d6b492c746efa820f5"
 
 initializeApp(firebaseConfig)
 const db = getFirestore()
@@ -23,8 +24,8 @@ const colRef = collection(db, 'coaches', 'languages', lang);
 // selecting the coaches Row in html file
 const coachesContent = document.getElementById('coaches-content');
 let coaches = []; // for fulling coaches in coaches page
-let html_top_coaches = ''; // content that we put in html
-let html_filtered_coaches = ''; // content that we put in html
+let html = ''; // content that we put in html
+// let html_filtered_coaches = ''; // content that we put in html
 coachesContent.innerHTML = ''; // empty coaches content before getting data
 
 async function getData() {
@@ -37,106 +38,15 @@ async function getData() {
 		})
 		coaches.sort((a, b) => a.order - b.order); // sort the array according to it's order
 		// in the index 'top coaches' page
-		if(coachesContent.classList.contains('top-coaches')){
+		if(coachesContent.classList.contains('top-coaches')) {
 			// Adding Content of Data coming from Firebase to HTML
 			coaches = coaches.filter(coach => coach.order <= 3)
-			.map(coach => {
-				html_top_coaches += `
-					<div class="col-lg-4 col-md-6">
-						<div class="member" data-aos="zoom-in">
-							<div class="pic"><img src="${coach.image}" class="img-fluid" alt="Coach Image"></div>
-								<div class="member-info coaches pricing">
-									<div class='ps-3 pe-3'>
-										<h5>${coach.name}</h5>
-										<h4>${coach.jobTitle}</h4>
-									</div>
-									<span>${coach.pricing}</span>
-									<p class='detail-item mb-1 mt-1'>Details</p>
-									<span>${coach.category}</span>
-									<span>${coach.summary}</span>
-									<span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
-									<div class="social">
-										<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
-									</div>
-									<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Buy Now</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				`
-			})
-		} else { // in the coaches page we filter coaches.
-			const allCoachesFields = coaches.map(coach => coach.field);
-			allCoachesFields.forEach(field => {
-				html_filtered_coaches += `
-				<div class="${ field }">
-					<h2 class="mb-3">${ field }</h2>
-				`;
-				coaches.filter( coach => coach.field == field )
-				.map(coach => {
-					html_filtered_coaches += `
-						<div class="row">
-							<div class="col-lg-4 col-md-6">
-								<div class="member" data-aos="zoom-in">
-									<div class="pic"><img src=${coach.image} class="img-fluid" alt="Coach Image"></div>
-										<div class="member-info coaches pricing">
-											<div class='ps-3 pe-3'>
-												<h5>${coach.name}</h5>
-												<h4>${coach.jobTitle}</h4>
-											</div>
-											<span>${coach.pricing}</span>
-											<p class='detail-item mb-1 mt-1'>Details</p>
-											<span>${coach.category}</span>
-											<span>${coach.summary}</span>
-											<span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
-											<div class="social">
-												<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
-											</div>
-											<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Buy Now</a>
-										</div>
-									</div>
-								</div>
-							</div>
-					</div>
-				`;
-				})
-			});
 		}
-	})
-	.catch( _ => {
-		coachesContent.innerHTML = 'No Coaches till now';
-	});
-};
-
-getData().then(() => {
-	console.log(html_filtered_coaches)
-	if(coachesContent.classList.contains('top-coaches')) {
-		coachesContent.innerHTML = html_top_coaches;
-	} else if (coachesContent.classList.contains('filtered-coaches')) {
-		coachesContent.innerHTML = html_filtered_coaches;
-	} else {
-		coachesContent.innerHTML = 'No Coaches till now';
-	}
-});
-
-/*
---- the Logic
-
-const fieldsArr = parentArr.map(coach => {
-	return coach.field;
-});
-console.log(fieldsArr);
-let html = '';
-fieldsArr.forEach( field => {
-	html += ` <h2 class="mb-5">${ field }</h2> `
-	parentArr.filter(item => field == item.field)
-	.map( coach => {
-		html += `
-		<div class="row" id="coaches-content">
-		
+		coaches.map(coach => {
+			html += `
 			<div class="col-lg-4 col-md-6">
 				<div class="member" data-aos="zoom-in">
-					<div class="pic"><img src="http://drive.google.com/uc?export=view&id=1NQh4rSLSS4QXNS43vMjXniPZNrCxKwZM" class="img-fluid" alt="Coach Image"></div>
+					<div class="pic"><img src="${coach.image}" class="img-fluid" alt="Coach Image"></div>
 						<div class="member-info coaches pricing">
 							<div class='ps-3 pe-3'>
 								<h5>${coach.name}</h5>
@@ -155,10 +65,61 @@ fieldsArr.forEach( field => {
 					</div>
 				</div>
 			</div>
-		</div>
-		------------------
-		`; 
-	}  )
+		`;
+		})
+	})
+	.catch( _ => {
+		coachesContent.innerHTML = 'No Coaches till now';
+	});
+};
+
+getData().then(() => {
+	if(coachesContent.classList.contains('top-coaches')) {
+		coachesContent.innerHTML = html;
+	} else if (coachesContent.classList.contains('filtered-coaches')) {
+		coachesContent.innerHTML = html;
+	} else {
+		coachesContent.innerHTML = 'No Coaches till now';
+	}
 });
-console.log(html);
-*/
+
+/* Filtering with select box */
+const industryBox = document.getElementById('industry');
+
+
+industryBox.onchange = () => {
+	let userIndustry = industryBox.value;
+	let html_filtering_by_user = '';
+	if(userIndustry !== '') {
+		coaches.filter( coach => coach.category.toLowerCase().indexOf(userIndustry) != -1)
+		.map(coach => {
+			html_filtering_by_user += `
+				<div class="col-lg-4 col-md-6">
+					<div class="member" data-aos="zoom-in">
+						<div class="pic"><img src="${coach.image}" class="img-fluid" alt="Coach Image"></div>
+							<div class="member-info coaches pricing">
+								<div class='ps-3 pe-3'>
+									<h5>${coach.name}</h5>
+									<h4>${coach.jobTitle}</h4>
+								</div>
+								<span>${coach.pricing}</span>
+								<p class='detail-item mb-1 mt-1'>Details</p>
+								<span>${coach.category}</span>
+								<span>${coach.summary}</span>
+								<span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
+								<div class="social">
+									<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
+								</div>
+								<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Buy Now</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			`
+		});
+		coachesContent.innerHTML = html_filtering_by_user;
+	} else {
+		coachesContent.innerHTML = html;
+	};
+};
+

@@ -999,6 +999,15 @@ section {
 /*--------------------------------------------------------------
 # Team
 --------------------------------------------------------------*/
+
+#filtered-form input , select {
+  outline: 0;
+  padding: 4px 10px;
+  border: 1px solid #6c757d;
+  border-radius: 4px;
+}
+
+
 .team {
   background: url("../img/team-bg.jpg") center center no-repeat;
   background-size: cover;
