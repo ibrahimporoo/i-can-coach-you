@@ -83,125 +83,141 @@ getData().then(() => {
 	}
 });
 
-/* Filtering with select box */
-const industryBox = document.getElementById('industry');
-const searchField = document.getElementById('search-field');
-const searchCountry = document.getElementById('search-country');
+/* Hiding Filtered Boxes with select box */
+const inputFields = document.querySelectorAll('.input-field');
 
-
-industryBox.onchange = () => {
-	let userIndustry = industryBox.value;
-	let html_filtering_by_user = '';
-	if(userIndustry !== '') {
-		coaches.filter( coach => coach.category.toLowerCase().indexOf(userIndustry) != -1)
-		.map(coach => {
-			html_filtering_by_user += `
-				<div class="col-lg-4 col-md-6">
-					<div class="member" data-aos="zoom-in">
-						<div class="pic"><img src="${coach.image}" class="img-fluid" alt="Coach Image"></div>
-							<div class="member-info coaches pricing">
-								<div class='ps-3 pe-3'>
-									<h5>${coach.name}</h5>
-									<h4>${coach.jobTitle}</h4>
-								</div>
-								<span>${coach.pricing}</span>
-								<p class='detail-item mb-1 mt-1'>Details</p>
-								<span>${coach.category}</span>
-								<span>${coach.summary}</span>
-								<span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
-								<div class="social">
-									<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
-								</div>
-								<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Buy Now</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			`
-		});
-		coachesContent.innerHTML = html_filtering_by_user;
-	} else {
-		coachesContent.innerHTML = html;
-	};
+// if click outside
+window.onclick = (e) => {
+	if(!e.target.classList.contains('filter-el')) {
+		inputFields.forEach(field => field.classList.remove('on'));
+	}
 };
 
+inputFields.forEach(field => {
+	field.addEventListener('click', () => {
+		field.classList.toggle('on');
+	})
+});
+
+// Select Dropdown menues
+const byIndustry = document.querySelectorAll('.dropdown.by-industry li');
+const byCountry = document.querySelectorAll('.dropdown.by-country li');
+// adding checked to the first item in the list
+checkTheElement(byIndustry, 'category');
+checkTheElement(byCountry, 'country');
+
+function checkTheElement(el, filterBy) {
+
+	el.forEach(item => {
+
+		item.addEventListener('click', () => {
+
+			el.forEach(item => {
+				if(item.classList.contains('on')) {
+					item.classList.remove('on');
+					item.querySelector('i').classList.remove('on');
+				}
+			});
+			
+			item.classList.add('on');
+			item.querySelector('i').classList.add('on');
+			
+			// Search the Item
+			let searchingVal = item.dataset.category;
+			if(searchingVal != 'all') {
+				switch(filterBy) {
+					case 'category':
+						filteredCoaches = coaches.filter( coach => {
+							if(coach.category.toLowerCase().indexOf(searchingVal) != -1) {
+								return coach;
+							}
+						})
+						showNewCoaches(filteredCoaches);
+						break;
+					case 'country':
+						filteredCoaches = coaches.filter( coach => {
+							if(coach.country.toLowerCase().indexOf(searchingVal) != -1) {
+								return coach;
+							}
+						})
+						showNewCoaches(filteredCoaches);
+						break;
+					case 'jobTitle':
+						filteredCoaches = coaches.filter( coach => {
+							if(coach.jobTitle.toLowerCase().indexOf(searchingVal) != -1) {
+								return coach;
+							}
+						})
+						showNewCoaches(filteredCoaches);
+						break;
+					default:
+						return coaches;
+				}
+			} else {
+				showNewCoaches(coaches);
+			}
+		})
+	});
+
+};
+
+// Handle Events of searching and filtering when inputs changes
+
+let searchField = document.getElementById('search-field');
+let filteredCoaches = coaches;
+let html_filtering_by_user = '';
+
+// Handle User searching
 searchField.addEventListener('keyup', () => {
-	let userSearch = searchField.value;
-	let html_filtering_by_user = '';
-	if(userSearch !== '') {
-		coaches.filter( coach => {
+	let searchFieldValue = searchField.value.toLowerCase();
+	if(searchFieldValue !== '') {
+		filteredCoaches = coaches.filter( coach => {
 			if(
-				coach.category.toLowerCase().indexOf(userSearch) != -1 ||
-				coach.name.toLowerCase().indexOf(userSearch) != -1 ||
-				coach.jobTitle.toLowerCase().indexOf(userSearch) != -1 ||
-				coach.country.toLowerCase().indexOf(userSearch) != -1
+				coach.category.toLowerCase().indexOf(searchFieldValue) != -1 ||
+				coach.name.toLowerCase().indexOf(searchFieldValue) != -1 ||
+				coach.jobTitle.toLowerCase().indexOf(searchFieldValue) != -1 ||
+				coach.country.toLowerCase().indexOf(searchFieldValue) != -1
 			) {
 				return coach;
 			}
 		})
-		.map(coach => {
-			html_filtering_by_user += `
-				<div class="col-lg-4 col-md-6">
-					<div class="member" data-aos="zoom-in">
-						<div class="pic"><img src="${coach.image}" class="img-fluid" alt="Coach Image"></div>
-							<div class="member-info coaches pricing">
-								<div class='ps-3 pe-3'>
-									<h5>${coach.name}</h5>
-									<h4>${coach.jobTitle}</h4>
-								</div>
-								<span>${coach.pricing}</span>
-								<p class='detail-item mb-1 mt-1'>Details</p>
-								<span>${coach.category}</span>
-								<span>${coach.summary}</span>
-								<span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
-								<div class="social">
-									<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
-								</div>
-								<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Buy Now</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			`
-		});
-		coachesContent.innerHTML = html_filtering_by_user;
+		showNewCoaches(filteredCoaches);
 	} else {
-		coachesContent.innerHTML = html;
+		return false
 	};
 })
+// Handle User Choosed Categories
 
-searchCountry.onchange = () => {
-	let userCountry = searchCountry.value;
-	let html_filtering_by_user = '';
-	if(userCountry !== '') {
-		coaches.filter( coach => coach.country.toLowerCase().indexOf(userCountry) != -1)
-		.map(coach => {
-			html_filtering_by_user += `
-				<div class="col-lg-4 col-md-6">
-					<div class="member" data-aos="zoom-in">
-						<div class="pic"><img src="${coach.image}" class="img-fluid" alt="Coach Image"></div>
-							<div class="member-info coaches pricing">
-								<div class='ps-3 pe-3'>
-									<h5>${coach.name}</h5>
-									<h4>${coach.jobTitle}</h4>
-								</div>
-								<span>${coach.pricing}</span>
-								<p class='detail-item mb-1 mt-1'>Details</p>
-								<span>${coach.category}</span>
-								<span>${coach.summary}</span>
-								<span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
-								<div class="social">
-									<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
-								</div>
-								<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Buy Now</a>
-							</div>
+
+
+
+
+function showNewCoaches(coaches) {
+	html_filtering_by_user = '';
+	coaches.map(coach => {
+		html_filtering_by_user += `
+		<div class="col-lg-4 col-md-6">
+			<div class="member" data-aos="zoom-in">
+				<div class="pic"><img src="${coach.image}" class="img-fluid" alt="Coach Image"></div>
+					<div class="member-info coaches pricing">
+						<div class='ps-3 pe-3'>
+							<h5>${coach.name}</h5>
+							<h4>${coach.jobTitle}</h4>
 						</div>
+						<span>${coach.pricing}</span>
+						<p class='detail-item mb-1 mt-1'>Details</p>
+						<span>${coach.category}</span>
+						<span>${coach.summary}</span>
+						<span>${coach.country}/${coach.city} - ${coach.rating} stars</span>
+						<div class="social">
+							<a href="${coach.SM_account}" target="_blank"><i class="bi bi-linkedin"></i></a>
+						</div>
+						<a href="${coach.paymentLink}" target="_blank" class="btn-buy mt-2">Buy Now</a>
 					</div>
 				</div>
-			`
-		});
-		coachesContent.innerHTML = html_filtering_by_user;
-	} else {
-		coachesContent.innerHTML = html;
-	};
+			</div>
+		</div>
+	`;
+	})
+	coachesContent.innerHTML = html_filtering_by_user;
 };

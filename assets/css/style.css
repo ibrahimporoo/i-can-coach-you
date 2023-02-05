@@ -1000,13 +1000,83 @@ section {
 # Team
 --------------------------------------------------------------*/
 
-#filtered-form input , select {
-  outline: 0;
-  padding: 4px 10px;
-  border: 1px solid #6c757d;
-  border-radius: 4px;
+#filtered-form {
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
+#filtered-form input {
+  outline: 0;
+  padding: 5px 12px;
+  border: 1px solid #6c757d;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+#filtered-form select {
+  position: relative;
+}
+
+#filtered-form .input-field {
+  gap: 10px;
+  max-width: 400px;
+  border: 1px solid #dee2e6;
+  padding: 10px 15px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+#filtered-form .dropdown {
+  z-index: 100;
+  background-color: white;
+  padding: 12px 0;
+  border-radius: 14px;
+  left: -5px;
+  box-shadow: 1px 1px 10px rgb(0 0 0 / 40%);
+  min-width: 180px;
+  max-height: 240px;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  top: calc(100% + 25px);
+  opacity: 0;
+  transition: .3s;
+}
+
+#filtered-form .dropdown li {
+  cursor: pointer;
+  padding: 4px 12px 4px 15px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+#filtered-form .dropdown li.on {
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+}
+
+#filtered-form .dropdown li i {
+  display: none;
+}
+
+#filtered-form .dropdown li.on i {
+  display: block;
+}
+
+#filtered-form .dropdown li.on i {
+  color: #333;
+}
+
+#filtered-form input:focus,
+#filtered-form .input-field.on {
+  border: 1.4px solid #333;
+  color: #333;
+}
+
+#filtered-form .input-field.on + .dropdown {
+  top: calc(100% + 10px);
+  opacity: 1;
+}
 
 .team {
   background: url("../img/team-bg.jpg") center center no-repeat;

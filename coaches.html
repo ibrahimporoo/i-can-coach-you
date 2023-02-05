@@ -112,35 +112,100 @@
             </div>
 
             <!-- Filtering with select box -->
-            <div id="filtered-form" class="d-flex align-items-center justify-content-between mb-4">
+            <div id="filtered-form" class="d-md-flex align-items-center justify-content-between mb-4">
 
-              <div class="input-field searching">
-                <input type="search" id="search-field" placeholder="search anything...">
+              <div class="mb-2 mb-md-0 filter-el">
+                <input class="w-100" type="search" id="search-field" placeholder="search anything...">
               </div>
 
-              <div class="selection-group d-flex align-items-center">
-                <div class="input-field ms-2 ">
-                  <select id="industry">
-                    <option value="">Select industry...</option>
-                    <option value="sales">Sales & Marketing</option>
-                    <option value="business">Business Management</option>
-                    <option value="soft skills">Soft Skills</option>
-                    <option value="content">Content & copy rights</option>
-                    <option value="hr">HR</option>
-                    <option value="media">Media, Photography & Film</option>
-                    <option value="technology">Technology</option>
-                    <option value="programming">programming</option>
-                    <option value="cyber">Cyber security</option>
-                    <option value="operations">operations</option>
-                  </select>
+              <div class="selection-group d-flex align-items-center justify-content-between justify-content-md-center gap-2">
+
+                <div class="position-relative filter-el">
+
+                  <div class="input-field d-flex justify-content-between filter-el">
+                    <p class="mb-0 filter-el">Select industry</p>
+                    <i class="bi bi-chevron-down filter-el"></i>
+                  </div>
+
+                  <ul class="dropdown position-absolute filter-el by-industry">
+                    <li class="filter-el on" data-category="all">
+                      All <i class="check-icon bi bi-check on"></i>
+                    </li>
+                    <li class="filter-el" data-category="sales">Sales & Marketing
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="business">Business Management
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="soft">Soft Skills
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="cont">Content & copy rights
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="hr">HR
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="media">Media, Photography & Film
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="technology">Technology
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="programming">programming
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="cyber">Cyber security
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="operation">operations
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="legal">Legal
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="finance">Finance
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="scienc">Science & Productivity
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="langua">Languages
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="logist">Logistics
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="arts">Arts & Design
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="entrepreneurship">Entrepreneurship
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                  </ul>
+
                 </div>
   
-                <div class="input-field ms-2">
-                  <select id="search-country">
-                    <option value="egypt">Egypt</option>
-                    <option value="saudi">Saudi Arabia</option>
-                  </select>
+                <div class="position-relative">
+
+                  <div class="input-field filter-el d-flex justify-content-between">
+                    <p class="mb-0 filter-el">All over the world</p>
+                    <i class="bi bi-chevron-down filter-el"></i>
+                  </div>
+                  <ul class="dropdown position-absolute filter-el by-country">
+                    <li class="filter-el on" data-category="all">
+                      All <i class="check-icon bi bi-check on"></i>
+                    </li>
+                    <li class="filter-el" data-category="egypt">Egypt
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="saudia">Saudia Arabia
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                  </ul>
+
                 </div>
+
               </div>
 
             </div>
