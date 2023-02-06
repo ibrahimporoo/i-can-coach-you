@@ -122,6 +122,36 @@
 
               <div class="selection-group d-flex align-items-center justify-content-between justify-content-md-center gap-2">
 
+                <div class="position-relative">
+
+                  <div class="input-field filter-el d-flex justify-content-between">
+                    <p class="mb-0 filter-el">المسمى الوظيفي</p>
+                    <i class="bi bi-chevron-down filter-el"></i>
+                  </div>
+                  <ul class="dropdown position-absolute filter-el by-job-title">
+                    <li class="filter-el on" data-category="الكل">
+                      الكل <i class="check-icon bi bi-check on"></i>
+                    </li>
+                    <li class="filter-el" data-category="صاحب">
+                      مساهم فردي - صاحب عمل خاص
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="متوسط">مدير متوسط
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="خبير">مدير خبير
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="مدير">المخرج / نائب الرئيس
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                    <li class="filter-el" data-category="مؤسس">مؤسس / صاحب عمل
+                      <i class="check-icon bi bi-check"></i>
+                    </li>
+                  </ul>
+
+                </div>
+
                 <div class="position-relative filter-el">
 
                   <div class="input-field d-flex justify-content-between filter-el">
@@ -130,7 +160,7 @@
                   </div>
 
                   <ul class="dropdown position-absolute filter-el by-industry">
-                    <li class="filter-el on" data-category="all">
+                    <li class="filter-el on" data-category="الكل">
                       الكل <i class="check-icon bi bi-check on"></i>
                     </li>
                     <li class="filter-el" data-category="المبيع">المبيعات والتسويق
@@ -191,7 +221,7 @@
                 <div class="position-relative">
 
                   <div class="input-field filter-el d-flex justify-content-between">
-                    <p class="mb-0 filter-el">All over the world</p>
+                    <p class="mb-0 filter-el">جميع الدول..</p>
                     <i class="bi bi-chevron-down filter-el"></i>
                   </div>
                   <ul class="dropdown position-absolute filter-el by-country">
@@ -212,7 +242,7 @@
 
             </div>
 
-            <div class="row" id="coaches-content">
+            <div class="row filtered-coaches" id="coaches-content">
 
               <!-- <div class="col-lg-4 col-md-6">
                 <div class="member" data-aos="zoom-in" data-aos-delay="100">

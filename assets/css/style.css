@@ -1067,6 +1067,12 @@ section {
   color: #333;
 }
 
+@media (max-width: 555px) {
+  #filtered-form .input-field p {
+    font-size: 11px;
+  }
+}
+
 #filtered-form input:focus,
 #filtered-form .input-field.on {
   border: 1.4px solid #333;

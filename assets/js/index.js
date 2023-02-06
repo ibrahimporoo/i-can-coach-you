@@ -69,7 +69,7 @@ async function getData() {
 		})
 	})
 	.catch( _ => {
-		coachesContent.innerHTML = 'No Coaches till now';
+		coachesContent.innerHTML = `<h1 style='padding: 100px 0; text-align: center'>No coaches till now</h1>`;
 	});
 };
 
@@ -79,8 +79,8 @@ getData().then(() => {
 	} else if (coachesContent.classList.contains('filtered-coaches')) {
 		coachesContent.innerHTML = html;
 	} else {
-		coachesContent.innerHTML = 'No Coaches till now';
-	}
+		coachesContent.innerHTML = `<h1 style='padding: 100px 0; text-align: center'>No coaches till now</h1>`;
+	};
 });
 
 /* Hiding Filtered Boxes with select box */
@@ -102,9 +102,11 @@ inputFields.forEach(field => {
 // Select Dropdown menues
 const byIndustry = document.querySelectorAll('.dropdown.by-industry li');
 const byCountry = document.querySelectorAll('.dropdown.by-country li');
+const byJobTitle = document.querySelectorAll('.dropdown.by-job-title li');
 // adding checked to the first item in the list
 checkTheElement(byIndustry, 'category');
 checkTheElement(byCountry, 'country');
+checkTheElement(byJobTitle, 'jobTitle');
 
 function checkTheElement(el, filterBy) {
 
@@ -190,8 +192,6 @@ searchField.addEventListener('keyup', () => {
 
 
 
-
-
 function showNewCoaches(coaches) {
 	html_filtering_by_user = '';
 	coaches.map(coach => {
@@ -219,5 +219,17 @@ function showNewCoaches(coaches) {
 		</div>
 	`;
 	})
-	coachesContent.innerHTML = html_filtering_by_user;
+	if(coaches.length > 0) {
+		coachesContent.innerHTML = html_filtering_by_user;
+	} else {
+		if(lang == 'ar') {
+			coachesContent.innerHTML = `
+				<h1 style='padding: 100px 0; text-align: center'>لا يوجد مدربون علي حسب اختيارك</h1>
+			`;
+		} else {
+			coachesContent.innerHTML = `
+			<h1 style='padding: 100px 0; text-align: center'>There are no Coaches according to your filtration</h1>
+			`;
+		}
+	}
 };
